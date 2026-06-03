@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Water+ Club | Launching Soon</title>
+  <meta name="description" content="Join the waiting list for early access to Water+ Club.">
+  <style>
+    :root {
+      --ink: #10212a;
+      --muted: #58707a;
+      --line: #dbe7e9;
+      --sky: #d8f4ff;
+      --mint: #dff7ef;
+      --blue: #0d8fd0;
+      --blue-dark: #076a9c;
+      --green: #168a6f;
+      --cream: #fffaf1;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(16, 33, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--white);
+      letter-spacing: 0;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(219, 231, 233, 0.85);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.04rem;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(140deg, #0d8fd0, #16a57b);
+      box-shadow: 0 10px 24px rgba(13, 143, 208, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 8px;
+      border: 0;
+      padding: 0 18px;
+      color: white;
+      background: var(--blue);
+      font-weight: 800;
+      box-shadow: 0 12px 26px rgba(13, 143, 208, 0.24);
+      cursor: pointer;
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      background: var(--blue-dark);
+    }
+
+    .hero {
+      min-height: calc(100svh - 72px);
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.72) 43%, rgba(216, 244, 255, 0.24)),
+        url("assets/water-hero.svg") center right / min(58vw, 780px) auto no-repeat,
+        linear-gradient(140deg, #f7fcff 0%, #eefaf6 62%, #fffaf1 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 52px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.72fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(13, 143, 208, 0.24);
+      border-radius: 999px;
+      color: var(--blue-dark);
+      background: rgba(255, 255, 255, 0.76);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 5.7rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 620px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-left: 3px solid var(--blue);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .signup-panel {
+      align-self: end;
+      border: 1px solid rgba(219, 231, 233, 0.92);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: var(--shadow);
+    }
+
+    .signup-panel h2 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .signup-panel p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .form-note {
+      min-height: 22px;
+      margin: 2px 0 0;
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #cadadd;
+      border-radius: 7px;
+      padding: 0 12px;
+      color: var(--ink);
+      background: white;
+      font: inherit;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(13, 143, 208, 0.2);
+      border-color: var(--blue);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section.alt {
+      background: #f7fbfa;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .plan {
+      position: relative;
+      min-height: 330px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .plan.featured {
+      border-color: rgba(13, 143, 208, 0.44);
+      box-shadow: 0 18px 50px rgba(13, 143, 208, 0.14);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--green);
+      background: var(--mint);
+      font-size: 0.76rem;
+      font-weight: 900;
+    }
+
+    .plan h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    .plan ul,
+    .steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plan li,
+    .step p {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .plan li {
+      padding: 11px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      padding-top: 16px;
+      border-top: 3px solid var(--green);
+    }
+
+    .step strong {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 18px;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--green);
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1.24rem;
+    }
+
+    .step p {
+      margin: 0;
+    }
+
+    .cta-band {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(135deg, #0d8fd0, #168a6f);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-band h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      letter-spacing: 0;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.5;
+    }
+
+    .cta-band .button {
+      color: var(--blue-dark);
+      background: white;
+      box-shadow: none;
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74)),
+          url("assets/water-hero.svg") top right / 88vw auto no-repeat,
+          linear-gradient(140deg, #f7fcff 0%, #eefaf6 62%, #fffaf1 100%);
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 280px;
+      }
+
+      .signup-panel {
+        align-self: stretch;
+      }
+
+      .plans,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .plan {
+        min-height: auto;
+      }
+
+      .cta-band {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      .brand span {
+        max-width: 160px;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-inner {
+        width: min(100% - 24px, 1120px);
+        padding-top: 210px;
+        padding-bottom: 42px;
+      }
+
+      h1 {
+        font-size: clamp(2.45rem, 16vw, 3.25rem);
+      }
+
+      .hero-stats,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .signup-panel,
+      .cta-band {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Water+ Club home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" role="img">
+            <path fill="currentColor" d="M12 2.7 6.2 11a7 7 0 1 0 11.6 0L12 2.7Zm0 17.1a4.4 4.4 0 0 1-4.4-4.4c0-.83.28-1.61.76-2.24a5.9 5.9 0 0 0 7.28 0c.48.63.76 1.41.76 2.24A4.4 4.4 0 0 1 12 19.8Z"/>
+          </svg>
+        </span>
+        <span>Water+ Club</span>
+      </a>
+      <div class="nav-links">
+        <a href="#options">Water range</a>
+        <a href="#how">How it works</a>
+        <a href="#start" class="nav-cta">Join waiting list</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Launching soon</p>
+          <h1 id="hero-title">Premium Water Delivered To Your Door</h1>
+          <p class="lead">Water+ Club is a UK premium water subscription business, bringing pure water and functional water to your door. Join the waiting list for early access and help us see where demand is strongest.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button" href="#start">Join the waiting list</a>
+            <a class="button secondary" href="#options">Explore the range</a>
+          </div>
+          <div class="hero-stats" aria-label="Service highlights">
+            <div class="stat">
+              <strong>Waiting list</strong>
+              <span>opened for early access</span>
+            </div>
+            <div class="stat">
+              <strong>Pure water</strong>
+              <span>premium everyday hydration</span>
+            </div>
+            <div class="stat">
+              <strong>Functional water</strong>
+              <span>enhanced water concepts</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="signup-panel" id="start" aria-labelledby="signup-title">
+          <h2 id="signup-title">Get early access</h2>
+          <p>Tell us where you are. We’ll use your postcode to understand demand and invite early members as launch areas open.</p>
+          <form id="waitlist-form">
+            <label>
+              Name
+              <input name="name" type="text" autocomplete="name" placeholder="Your name">
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" placeholder="you@example.com">
+            </label>
+            <label>
+              Postcode
+              <input name="postcode" type="text" autocomplete="postal-code" placeholder="W11 2BQ">
+            </label>
+            <button class="button" type="submit">Join the waiting list</button>
+            <p class="form-note" id="form-note" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="options" aria-labelledby="options-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="options-title">A premium UK water subscription, shaped by demand.</h2>
+          <p>Water+ Club is being built around high-quality pure water and functional water options. Your signup helps show which areas and product formats should launch first.</p>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <h3>Pure Water</h3>
+            <ul>
+              <li>Premium still and sparkling water for everyday hydration</li>
+              <li>Designed for homes, flats, and regular weekly routines</li>
+              <li>Join the list to register interest in your area</li>
+            </ul>
+          </article>
+          <article class="plan featured">
+            <span class="badge">Waiting list opened</span>
+            <h3>Functional Water</h3>
+            <ul>
+              <li>Enhanced water concepts for focus, recovery, and daily wellbeing</li>
+              <li>Built for people who want more from their hydration</li>
+              <li>Early interest will help decide the first functional range</li>
+            </ul>
+          </article>
+          <article class="plan">
+            <h3>Home & Workplace</h3>
+            <ul>
+              <li>Recurring subscription delivery for households and teams</li>
+              <li>Postcodes help reveal where demand is strongest</li>
+              <li>Early invites will go to high-interest areas first</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-title">Help shape where Water+ Club launches.</h2>
+          <p>The goal now is to understand real demand before taking orders, payments, or promising delivery coverage.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <strong>1</strong>
+            <h3>Join the list</h3>
+            <p>Add your name, email, and postcode so we can measure interest by area.</p>
+          </li>
+          <li class="step">
+            <strong>2</strong>
+            <h3>We map demand</h3>
+            <p>Postcodes help reveal where early interest clusters, from London to other UK cities.</p>
+          </li>
+          <li class="step">
+            <strong>3</strong>
+            <h3>Early access opens</h3>
+            <p>When your area is ready, you’ll get an invite before the public launch.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <div>
+            <h2 id="cta-title">Want Water+ Club in your area?</h2>
+            <p>Join the waiting list and help decide where premium water delivery should launch first.</p>
+          </div>
+          <a class="button" href="#start">Join waiting list</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Water+ Club</span>
+      <span>Launching soon. Waiting-list signups only; no orders or payments are taken on this page.</span>
+    </div>
+  </footer>
+  <script>
+    const waitlistForm = document.querySelector("#waitlist-form");
+    const formNote = document.querySelector("#form-note");
+
+    waitlistForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const postcode = new FormData(waitlistForm).get("postcode") || "your area";
+      formNote.textContent = "Thanks. We’ll use " + (postcode.toString().trim() || "your postcode") + " to track launch demand.";
+      waitlistForm.reset();
+    });
+  </script>
+</body>
+</html>
