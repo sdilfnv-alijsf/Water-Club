@@ -239,7 +239,8 @@
       font-weight: 800;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       min-height: 46px;
       border: 1px solid #cadadd;
@@ -250,7 +251,8 @@
       font: inherit;
     }
 
-    input:focus {
+    input:focus,
+    select:focus {
       outline: 3px solid rgba(13, 143, 208, 0.2);
       border-color: var(--blue);
     }
@@ -549,18 +551,30 @@
         <aside class="signup-panel" id="start" aria-labelledby="signup-title">
           <h2 id="signup-title">Get early access</h2>
           <p>Tell us where you are. We’ll use your postcode to understand demand and invite early members as launch areas open.</p>
-          <form id="waitlist-form">
+          <form id="waitlist-form" action="https://formsubmit.co/ajax/lukedinwoodie@icloud.com" method="POST">
+            <input type="hidden" name="_subject" value="New Water+ Club waitlist signup">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
             <label>
-              Name
-              <input name="name" type="text" autocomplete="name" placeholder="Your name">
+              First Name
+              <input name="first_name" type="text" autocomplete="given-name" placeholder="Your first name" required>
             </label>
             <label>
-              Email
-              <input name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              Email Address
+              <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             </label>
             <label>
               Postcode
-              <input name="postcode" type="text" autocomplete="postal-code" placeholder="W11 2BQ">
+              <input name="postcode" type="text" autocomplete="postal-code" placeholder="W11 2BQ" required>
+            </label>
+            <label>
+              Interested In
+              <select name="interested_in" required>
+                <option value="" selected disabled>Select an option</option>
+                <option value="Pure Water">Pure Water</option>
+                <option value="Functional Water">Functional Water</option>
+                <option value="Both">Both</option>
+              </select>
             </label>
             <button class="button" type="submit">Join the waiting list</button>
             <p class="form-note" id="form-note" aria-live="polite"></p>
@@ -654,11 +668,33 @@
     const waitlistForm = document.querySelector("#waitlist-form");
     const formNote = document.querySelector("#form-note");
 
-    waitlistForm.addEventListener("submit", (event) => {
+    waitlistForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const postcode = new FormData(waitlistForm).get("postcode") || "your area";
-      formNote.textContent = "Thanks. We’ll use " + (postcode.toString().trim() || "your postcode") + " to track launch demand.";
-      waitlistForm.reset();
+      const submitButton = waitlistForm.querySelector("button");
+      const formData = new FormData(waitlistForm);
+      const postcode = formData.get("postcode") || "your postcode";
+
+      submitButton.disabled = true;
+      formNote.textContent = "Sending...";
+
+      try {
+        const response = await fetch(waitlistForm.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed");
+        }
+
+        formNote.textContent = "Thank you. You’re on the Water+ Club waiting list, and we’ll use " + (postcode.toString().trim() || "your postcode") + " to track launch demand.";
+        waitlistForm.reset();
+      } catch (error) {
+        formNote.textContent = "Sorry, something went wrong. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   </script>
 </body>
