@@ -303,6 +303,33 @@
       gap: 16px;
     }
 
+    .packaging-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .packaging-item {
+      min-height: 150px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .packaging-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .packaging-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
     .plan {
       position: relative;
       min-height: 330px;
@@ -354,7 +381,7 @@
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -453,6 +480,7 @@
       }
 
       .plans,
+      .packaging-grid,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -591,20 +619,20 @@
         </div>
         <div class="plans">
           <article class="plan">
-            <h3>Pure Water</h3>
+            <h3>Product 1: Pure Water</h3>
             <ul>
-              <li>Premium still and sparkling water for everyday hydration</li>
-              <li>Designed for homes, flats, and regular weekly routines</li>
-              <li>Join the list to register interest in your area</li>
+              <li>Purified water for clean everyday hydration</li>
+              <li>Great taste, delivered on a regular subscription</li>
+              <li>Eco-friendly packaging options being prioritised</li>
             </ul>
           </article>
           <article class="plan featured">
             <span class="badge">Waiting list opened</span>
-            <h3>Functional Water</h3>
+            <h3>Product 2: Functional/Hydration Water</h3>
             <ul>
-              <li>Enhanced water concepts for focus, recovery, and daily wellbeing</li>
-              <li>Built for people who want more from their hydration</li>
-              <li>Early interest will help decide the first functional range</li>
+              <li>Added electrolytes for enhanced hydration</li>
+              <li>Potential magnesium, potassium, and vitamins</li>
+              <li>Built for people who want more from their water</li>
             </ul>
           </article>
           <article class="plan">
@@ -619,27 +647,63 @@
       </div>
     </section>
 
-    <section class="section alt" id="how" aria-labelledby="how-title">
+    <section class="section alt" aria-labelledby="packaging-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="how-title">Help shape where Water+ Club launches.</h2>
-          <p>The goal now is to understand real demand before taking orders, payments, or promising delivery coverage.</p>
+          <h2 id="packaging-title">Why not just buy water from the shop?</h2>
+          <p>Water+ Club is being designed around convenience, premium water, and better packaging choices, so customers can avoid repeated shop trips and bulky plastic-heavy restocks.</p>
+        </div>
+        <div class="packaging-grid">
+          <div class="packaging-item">
+            <strong>Sustainable packaging</strong>
+            <span>Packaging choices will be part of the product, not an afterthought.</span>
+          </div>
+          <div class="packaging-item">
+            <strong>Recyclable cartons</strong>
+            <span>A practical option for reducing reliance on standard plastic bottles.</span>
+          </div>
+          <div class="packaging-item">
+            <strong>Aluminium bottles</strong>
+            <span>Premium, recyclable formats for customers who want a better daily bottle.</span>
+          </div>
+          <div class="packaging-item">
+            <strong>Plastic-free goal</strong>
+            <span>The long-term aim is to move away from unnecessary single-use plastic.</span>
+          </div>
+          <div class="packaging-item">
+            <strong>Carbon-conscious delivery</strong>
+            <span>Regular routes can be planned more efficiently than one-off water runs.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-title">How It Works</h2>
+          <p>A simple subscription model for premium pure and functional water, delivered regularly and adjusted around your needs.</p>
         </div>
         <ol class="steps">
           <li class="step">
             <strong>1</strong>
-            <h3>Join the list</h3>
-            <p>Add your name, email, and postcode so we can measure interest by area.</p>
+            <h3>Choose your subscription</h3>
+            <p>Join the waiting list and tell us what kind of regular water delivery you want.</p>
           </li>
           <li class="step">
             <strong>2</strong>
-            <h3>We map demand</h3>
-            <p>Postcodes help reveal where early interest clusters, from London to other UK cities.</p>
+            <h3>Select your water</h3>
+            <p>Choose Pure, Functional, or Mixed depending on your hydration needs.</p>
           </li>
           <li class="step">
             <strong>3</strong>
-            <h3>Early access opens</h3>
-            <p>When your area is ready, you’ll get an invite before the public launch.</p>
+            <h3>Receive regular deliveries</h3>
+            <p>Get premium water delivered to your home or workplace on a reliable rhythm.</p>
+          </li>
+          <li class="step">
+            <strong>4</strong>
+            <h3>Adjust anytime</h3>
+            <p>Adjust, pause, or cancel anytime when your routine changes.</p>
           </li>
         </ol>
       </div>
