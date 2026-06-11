@@ -309,6 +309,58 @@
       gap: 12px;
     }
 
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .why-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .why-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    .why-card p,
+    .why-close p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .why-card p {
+      margin: 0 0 14px;
+    }
+
+    .why-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .why-close {
+      margin-top: 22px;
+      padding: 24px;
+      border-left: 4px solid var(--blue);
+      background: #f7fbfa;
+    }
+
+    .why-close h3 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .why-close p {
+      margin: 0;
+    }
+
     .packaging-item {
       min-height: 150px;
       padding: 18px;
@@ -504,6 +556,7 @@
       }
 
       .plans,
+      .why-grid,
       .packaging-grid,
       .steps {
         grid-template-columns: 1fr;
@@ -673,6 +726,49 @@
               <li>Early invites will go to high-interest areas first</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="why-water-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Why Water+ Club?</p>
+          <h2 id="why-water-title">Modern Water, Delivered</h2>
+          <p>Most tap water in the UK is safe to drink, but by the time it reaches your glass it may have travelled through miles of ageing pipes, picking up tastes, odours, and impurities that can affect quality and enjoyment.</p>
+          <p>At Water+ Club, we believe staying hydrated should be simple, enjoyable, and something you can trust.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <h3>Pure Water</h3>
+            <p>Our purified water is carefully filtered to remove unwanted contaminants, delivering:</p>
+            <ul>
+              <li>Clean, crisp taste</li>
+              <li>Consistent quality every time</li>
+              <li>No chlorine taste or odour</li>
+              <li>Convenient home or office delivery</li>
+              <li>Reduced reliance on single-use store purchases</li>
+            </ul>
+          </article>
+
+          <article class="why-card">
+            <h3>Functional Water</h3>
+            <p>Hydration is just the beginning. Our functional water options are enhanced with carefully selected vitamins, minerals, and nutrients designed to support modern lifestyles.</p>
+            <p>Depending on the blend, benefits may include:</p>
+            <ul>
+              <li>Daily hydration support</li>
+              <li>Added electrolytes for active lifestyles</li>
+              <li>Vitamins to complement a balanced diet</li>
+              <li>Convenient nutrition on the go</li>
+              <li>Great taste without sugary soft drinks</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="why-close">
+          <h3>Better Hydration, Less Hassle</h3>
+          <p>No carrying heavy bottles home. No last-minute supermarket trips. Just premium water delivered directly to your door, when you need it.</p>
         </div>
       </div>
     </section>
